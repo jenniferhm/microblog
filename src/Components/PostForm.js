@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { add, edit } from "./actions";
+import { add, edit } from "./../actions";
 import uuid from "uuid/v4";
 
 class PostForm extends Component {
@@ -19,8 +19,8 @@ class PostForm extends Component {
   }
 
   componentDidMount() {
-    let post = this.props.posts.find(p => p.id === this.props.match.params.id)
-    console.log(this.props.match.path)
+    let post = this.props.posts.find(p => p.id === this.props.match.params.id);
+
     if (this.props.match.path === "/newpost/new") {
       this.setState({ formView: "add" })
     } else {
@@ -36,7 +36,7 @@ class PostForm extends Component {
   }
 
   handleChange(evt) {
-    this.setState({ [evt.target.name]: evt.target.value })
+    this.setState({ [evt.target.name]: evt.target.value });
   }
 
   handleSubmit(evt) {

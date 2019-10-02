@@ -3,7 +3,6 @@ import { ADD_POST, EDIT_POST, REMOVE_POST, ADD_COMMENT, DELETE_COMMENT } from ".
 const INITIAL_STATE = { posts: [] };
 
 function rootReducer(state = INITIAL_STATE, action) {
-  console.log("THIS IS STATE,", state);
   switch (action.type) {
     case ADD_POST:
       let newPost = { ...action.payload };
@@ -39,16 +38,18 @@ function rootReducer(state = INITIAL_STATE, action) {
 
     case DELETE_COMMENT:
       let { postIdentification, commentToDelete } = action.payload
-      let postidx = state.posts.findIndex(post => post.id === postIdentification);
-      let commentidx = state.posts[postidx].comments.findIndex(comment => comment === commentToDelete);
-      let commentsCopy = [...state.posts[postidx].comments];
-      commentsCopy.splice(commentidx, 1)
-      return { ...state, posts:
-        state.posts.map(post => (
-          post.id === postIdentification
-            ? { ...post, comments: [...commentsCopy] }
-            : post
-        )) };
+      let postIdx = state.posts.findIndex(post => post.id === postIdentification);
+      let commentIdx = state.posts[postIdx].comments.findIndex(comment => comment === commentToDelete);
+      let commentsCopy = [...state.posts[postIdx].comments];
+      commentsCopy.splice(commentIdx, 1)
+      return {
+        ...state, posts:
+          state.posts.map(post => (
+            post.id === postIdentification
+              ? { ...post, comments: [...commentsCopy] }
+              : post
+          ))
+      };
 
 
     default:

@@ -6,12 +6,12 @@ class NavBox extends Component {
   render() {
     return (
       <Navbar bg="light" expand="lg">
-          <NavLink to="/"><h2>Microblog</h2></NavLink>
+        <NavLink to="/"><h2>Microblog</h2></NavLink>
 
-          <Nav className="ml-auto" navbar>
-            <NavItem><NavLink to="/">Blog</NavLink></NavItem>
-            <NavItem><NavLink to="/newpost/new">Add a new post</NavLink></NavItem>
-          </Nav>
+        <Nav className="ml-auto" navbar>
+          <NavItem><NavLink to="/">Blog</NavLink></NavItem>
+          <NavItem><NavLink to="/newpost/new">Add a new post</NavLink></NavItem>
+        </Nav>
       </Navbar>
     );
   }

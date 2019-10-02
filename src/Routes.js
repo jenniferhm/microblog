@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePageListContainer from "./Containers/HomePageListContainer";
-import PostForm from "./PostForm";
+import PostForm from "./Components/PostForm";
 import PostContainer from "./Containers/PostContainer";
 
 class Routes extends Component {

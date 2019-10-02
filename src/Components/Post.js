@@ -16,7 +16,7 @@ class Post extends Component {
 
   render() {
     const postList = this.props.posts;
-    let post = postList.find(p => p.id === this.props.match.params.id)
+    let post = postList.find(p => p.id === this.props.match.params.id);
     return (
       <div>
         <h4>{post.title}</h4>
@@ -24,8 +24,8 @@ class Post extends Component {
         <button onClick={this.handleDelete}>Delete</button>
         <p>{post.description}</p>
         <p>{post.body}</p>
-        <CommentList post={post} deleteComment={this.props.deleteComment}/>
-        <CommentForm addComment={this.props.addComment}post={post}/>
+        <CommentList post={post} deleteComment={this.props.deleteComment} />
+        <CommentForm addComment={this.props.addComment} post={post} />
       </div>
     );
   }

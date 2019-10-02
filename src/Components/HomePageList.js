@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 
 class HomePageList extends Component {
   render() {
-    console.log(this.props.posts);
     return (
       <div>
         <h1>HomePageList</h1>
         {this.props.posts.map(post => (
-          <Link to={`/${post.id}`} key={post.id}><TitleDescription post={post}/></Link>
+          <Link to={`/${post.id}`} key={post.id}><TitleDescription post={post} /></Link>
         ))}
       </div>
     );

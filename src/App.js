@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import NavBox from './NavBox';
-import './App.css';
 import Routes from './Routes';
+import './App.css';
 
 class App extends Component {
   render() {
