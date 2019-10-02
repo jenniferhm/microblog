@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Post from "../Components/Post";
-import { add, edit, remove } from "../actions";
+import { deleteComment, addComment, edit, remove } from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 const connectedComponent = connect(
   mapStateToProps,
-  { add, edit, remove }
+  { deleteComment, addComment, edit, remove }
 );
 
 export default connectedComponent(Post);

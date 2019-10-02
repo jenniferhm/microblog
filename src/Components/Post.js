@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
+import CommentForm from './CommentForm'
+import CommentList from './CommentList'
 
 class Post extends Component {
   constructor(props) {
@@ -17,10 +20,12 @@ class Post extends Component {
     return (
       <div>
         <h4>{post.title}</h4>
-        <button>Edit</button>
+        <Link to={`/${post.id}/edit`}><button>Edit</button></Link>
         <button onClick={this.handleDelete}>Delete</button>
         <p>{post.description}</p>
         <p>{post.body}</p>
+        <CommentList post={post} deleteComment={this.props.deleteComment}/>
+        <CommentForm addComment={this.props.addComment}post={post}/>
       </div>
     );
   }

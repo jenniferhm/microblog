@@ -11,16 +11,28 @@ class PostForm extends Component {
       title: "",
       description: "",
       body: "",
-      id: uuid()
+      id: uuid(),
+      comments: []
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.props.match.path === "/newpost/new"
-    ? this.setState({formView: "add"})
-    : this.setState({formView: "edit"});
+    let post = this.props.posts.find(p => p.id === this.props.match.params.id)
+    console.log(this.props.match.path)
+    if (this.props.match.path === "/newpost/new") {
+      this.setState({ formView: "add" })
+    } else {
+      this.setState({
+        formView: "edit",
+        title: post.title,
+        description: post.description,
+        body: post.body,
+        id: post.id,
+        comments: post.comments
+      });
+    }
   }
 
   handleChange(evt) {
@@ -30,8 +42,8 @@ class PostForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.state.formView === "add"
-    ? this.props.add(this.state)
-    : this.props.edit(this.state);
+      ? this.props.add(this.state)
+      : this.props.edit(this.state);
     this.props.history.push("/");
   }
 
@@ -40,11 +52,11 @@ class PostForm extends Component {
       <div>
         <form className="new-post-form" onSubmit={this.handleSubmit}>
           <label htmlFor="title">Title: </label>
-          <input type="text" id="title" name="title" onChange={this.handleChange} value={this.state.value} />
+          <input type="text" id="title" name="title" onChange={this.handleChange} value={this.state.title} />
           <label htmlFor="description">Description: </label>
-          <input type="text" id="description" name="description" onChange={this.handleChange} value={this.state.value} />
+          <input type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} />
           <label htmlFor="body">Body: </label>
-          <textarea type="text" id="body" name="body" onChange={this.handleChange} value={this.state.value} />
+          <textarea type="text" id="body" name="body" onChange={this.handleChange} value={this.state.body} />
           <button>Save</button>
         </form>
         <button onClick={() => this.props.history.push("/")}>Cancel</button>

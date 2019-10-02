@@ -1,4 +1,4 @@
-import { ADD_POST, EDIT_POST, REMOVE_POST } from "./actionTypes";
+import { ADD_POST, EDIT_POST, REMOVE_POST, ADD_COMMENT, DELETE_COMMENT } from "./actionTypes";
 
 export function add(post) {
   return {
@@ -18,5 +18,19 @@ export function remove(id) {
   return {
     type: REMOVE_POST,
     payload: id
-  };
+  }
+}
+
+export function addComment(commentAndId) {
+  return {
+    type: ADD_COMMENT,
+    payload: commentAndId
+  }
+}
+
+export function deleteComment(comment) {
+  return {
+    type: DELETE_COMMENT, 
+    payload: comment
+  }
 }
