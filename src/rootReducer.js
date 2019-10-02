@@ -13,7 +13,10 @@ function rootReducer(state = INITIAL_STATE, action) {
       return state;
 
     case REMOVE_POST:
-      return state;
+      let idx = state.posts.findIndex(post => post.id === action.payload.id);
+      let copy = [...state.posts];
+      copy.splice(idx, 1)
+      return {...state, posts: [...copy] };
 
     default:
       return state;

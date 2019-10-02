@@ -4,7 +4,7 @@ import { add, edit, remove } from "../actions";
 
 function mapStateToProps(state) {
   return {
-    posts: []
+    posts: state.posts
   };
 }
 

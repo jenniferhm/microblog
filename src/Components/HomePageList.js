@@ -9,7 +9,7 @@ class HomePageList extends Component {
       <div>
         <h1>HomePageList</h1>
         {this.props.posts.map(post => (
-          <Link to={`/${post.id}`}><TitleDescription key={post.id} post={post} /></Link>
+          <Link to={`/${post.id}`} key={post.id}><TitleDescription post={post} /></Link>
         ))}
       </div>
     );

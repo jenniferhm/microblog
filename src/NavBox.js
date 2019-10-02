@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import { Navbar, Nav} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import { Navbar, Nav, NavItem } from "reactstrap";
 
 class NavBox extends Component {
   render() {
     return (
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/">Microblog</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Blog</Nav.Link>
-            <Nav.Link href="/newpost/new">Add a new post</Nav.Link>
+          <NavLink to="/"><h2>Microblog</h2></NavLink>
+
+          <Nav className="ml-auto" navbar>
+            <NavItem><NavLink to="/">Blog</NavLink></NavItem>
+            <NavItem><NavLink to="/newpost/new">Add a new post</NavLink></NavItem>
           </Nav>
-        </Navbar.Collapse>
       </Navbar>
     );
   }
