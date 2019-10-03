@@ -7,32 +7,25 @@ class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formView: "",
+      formView: "add",
       title: "",
       description: "",
       body: "",
       id: uuid(),
       comments: []
     }
+    if (props.match.path !== "/newpost/new") {
+      this.state = {
+        formView: "edit",
+        title: props.post.title,
+        description: props.post.description,
+        body: props.post.body,
+        id: props.post.id,
+        comments: props.post.comments
+      };
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    let post = this.props.posts.find(p => p.id === this.props.match.params.id);
-
-    if (this.props.match.path === "/newpost/new") {
-      this.setState({ formView: "add" })
-    } else {
-      this.setState({
-        formView: "edit",
-        title: post.title,
-        description: post.description,
-        body: post.body,
-        id: post.id,
-        comments: post.comments
-      });
-    }
   }
 
   handleChange(evt) {
@@ -65,9 +58,14 @@ class PostForm extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+console.log(state.posts)
+  let post = state.posts.find(p => (
+    p.id === ownProps.match.params.id
+  ));
+
   return {
-    posts: state.posts
+    post
   }
 }
 

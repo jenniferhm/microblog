@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 
 class CommentList extends Component {
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  handleDelete(comment) {
+    this.props.deleteComment({ commentToDelete: comment, postIdentification: this.props.post.id })
+  }
+
   render() {
     return (
       <div className="comments-list">
@@ -8,8 +17,8 @@ class CommentList extends Component {
         <ul>
           {this.props.post.comments
             ? (this.props.post.comments.map(comment =>
-              <li>{comment}
-                <button onClick={() => this.props.deleteComment({ commentToDelete: comment, postIdentification: this.props.post.id })}>X</button>
+              <li key={comment}>{comment}
+                <button onClick={() => this.handleDelete(comment)}>X</button>
               </li>))
             : ""}
         </ul>

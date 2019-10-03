@@ -11,12 +11,12 @@ function rootReducer(state = INITIAL_STATE, action) {
     case EDIT_POST:
       let editedPost = { ...action.payload };
       return {
-        ...state, posts:
-          state.posts.map(post => (
-            post.id === action.payload.id
-              ? { ...editedPost }
-              : post
-          ))
+        ...state,
+        posts: state.posts.map(post => (
+          post.id === action.payload.id
+            ? { ...editedPost }
+            : post
+        ))
       }
 
     case REMOVE_POST:
@@ -28,12 +28,12 @@ function rootReducer(state = INITIAL_STATE, action) {
     case ADD_COMMENT:
       let { postId, comment } = action.payload
       return {
-        ...state, posts:
-          state.posts.map(post => (
-            post.id === postId
-              ? { ...post, comments: [...post.comments, comment] }
-              : post
-          ))
+        ...state,
+        posts: state.posts.map(post => (
+          post.id === postId
+            ? { ...post, comments: [...post.comments, comment] }
+            : post
+        ))
       };
 
     case DELETE_COMMENT:
@@ -43,12 +43,12 @@ function rootReducer(state = INITIAL_STATE, action) {
       let commentsCopy = [...state.posts[postIdx].comments];
       commentsCopy.splice(commentIdx, 1)
       return {
-        ...state, posts:
-          state.posts.map(post => (
-            post.id === postIdentification
-              ? { ...post, comments: [...commentsCopy] }
-              : post
-          ))
+        ...state,
+        posts: state.posts.map(post => (
+          post.id === postIdentification
+            ? { ...post, comments: [...commentsCopy] }
+            : post
+        ))
       };
 
 

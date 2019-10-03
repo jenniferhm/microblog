@@ -15,8 +15,7 @@ class Post extends Component {
   }
 
   render() {
-    const postList = this.props.posts;
-    let post = postList.find(p => p.id === this.props.match.params.id);
+    let { post } = this.props;
     return (
       <div>
         <h4>{post.title}</h4>

@@ -2,9 +2,12 @@ import { connect } from "react-redux";
 import Post from "../Components/Post";
 import { deleteComment, addComment, edit, remove } from "../actions";
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  let post = state.posts.find(p => (
+    p.id === ownProps.match.params.id
+  ));
   return {
-    posts: state.posts
+    post
   };
 }
 

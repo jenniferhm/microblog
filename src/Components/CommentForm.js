@@ -4,8 +4,7 @@ class CommentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: "",
-      postId: this.props.post.id
+      comment: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -17,10 +16,9 @@ class CommentForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addComment(this.state);
+    this.props.addComment({...this.state, postId: this.props.post.id});
     this.setState({
-      comment: "",
-      postId: this.props.post.id
+      comment: ""
     });
   }
 
