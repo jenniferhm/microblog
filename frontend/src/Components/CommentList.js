@@ -6,8 +6,8 @@ class CommentList extends Component {
     this.handleDelete = this.handleDelete.bind(this)
   }
 
-  handleDelete(comment) {
-    this.props.deleteComment({ commentToDelete: comment, postIdentification: this.props.post.id })
+  handleDelete(commentId) {
+    this.props.removeComment({ commentId: commentId, postIdentification: this.props.post.id })
   }
 
   render() {
@@ -18,7 +18,7 @@ class CommentList extends Component {
           {this.props.post.comments
             ? (this.props.post.comments.map(comment =>
               <li key={comment}>{comment}
-                <button onClick={() => this.handleDelete(comment)}>X</button>
+                <button onClick={() => this.handleDelete(comment.id)}>X</button>
               </li>))
             : ""}
         </ul>

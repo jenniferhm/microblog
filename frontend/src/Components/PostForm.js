@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { add, edit } from "./../actions";
+import { addPost, editPost } from "./../actions";
 import uuid from "uuid/v4";
 
 class PostForm extends Component {
@@ -35,8 +35,8 @@ class PostForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.state.formView === "add"
-      ? this.props.add(this.state)
-      : this.props.edit(this.state);
+      ? this.props.addPost(this.state)
+      : this.props.editPost(this.state);
     this.props.history.push("/");
   }
 
@@ -70,8 +70,8 @@ console.log(state.posts)
 }
 
 const mapDispatchToProps = {
-  add,
-  edit
+  addPost,
+  editPost
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm);

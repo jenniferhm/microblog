@@ -1,6 +1,6 @@
-import { ADD_POST, EDIT_POST, REMOVE_POST, ADD_COMMENT, DELETE_COMMENT } from "./actionTypes";
+import { ADD_POST, EDIT_POST, REMOVE_POST, ADD_COMMENT, DELETE_COMMENT, GET_POST, GET_POSTS } from "./actionTypes";
 
-const INITIAL_STATE = { posts: [] };
+const INITIAL_STATE = { posts: [], titles: [] };
 
 function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -51,6 +51,18 @@ function rootReducer(state = INITIAL_STATE, action) {
         ))
       };
 
+    case GET_POSTS:
+      return { ...state, titles: [...state.titles, ...action.payload] };
+
+    case GET_POST:
+      let foundPost = state.posts.find(post => post.id === action.payload.id)
+      if (!foundPost) {
+        return {
+          ...state,
+          posts: [...state.posts, ...action.payload]
+        }
+      }
+      return state;
 
     default:
       return state;

@@ -10,7 +10,7 @@ class Post extends Component {
   }
 
   handleDelete(evt) {
-    this.props.remove(this.props.match.params.id);
+    this.props.deletePost(this.props.match.params.id);
     this.props.history.push("/");
   }
 
