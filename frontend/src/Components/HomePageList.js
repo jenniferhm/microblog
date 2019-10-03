@@ -3,8 +3,12 @@ import TitleDescription from "./TitleDescription";
 import { Link } from "react-router-dom";
 
 class HomePageList extends Component {
-  async componentDidMount() {
-    await this.props.getAllPosts();
+  componentDidMount() {
+    this.props.getAllPosts();
+  }
+
+  componentDidUpdate() {
+    this.props.getAllPosts();
   }
 
   render() {

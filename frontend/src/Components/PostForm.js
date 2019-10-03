@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPost, editPost } from "./../actions";
-import uuid from "uuid/v4";
 
 class PostForm extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class PostForm extends Component {
       title: "",
       description: "",
       body: "",
-      id: uuid(),
+      id: "",
       comments: []
     }
     if (props.match.path !== "/newpost/new") {
@@ -59,9 +58,8 @@ class PostForm extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-console.log(state.posts)
   let post = state.posts.find(p => (
-    p.id === ownProps.match.params.id
+    p.id === +ownProps.match.params.id
   ));
 
   return {

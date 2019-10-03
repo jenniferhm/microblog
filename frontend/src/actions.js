@@ -99,7 +99,8 @@ export function editPost(post) {
   let { id } = post
   return async function thunk(dispatch) {
     try {
-      let res = await axios.put(`${BASE_URL}/${id}`, { post });
+      let res = await axios.put(`${BASE_URL}/${id}`, post);
+      console.log("THIS IS RES", res.data)
       dispatch(edit(res.data));
     }
     catch (error) {
@@ -137,8 +138,8 @@ export function removeComment(commentData) {
   let { postIdentification, commentId } = commentData
   return async function thunk(dispatch) {
     try {
-      let post = await axios.delete(`${BASE_URL}/${postIdentification}/comments/${commentId}`);
-      dispatch(deleteComment(post.data));
+      await axios.delete(`${BASE_URL}/${postIdentification}/comments/${commentId}`);
+      dispatch(deleteComment(commentData));
     }
     catch (error) {
       dispatch(handleError(error.response.data))

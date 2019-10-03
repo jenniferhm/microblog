@@ -11,7 +11,6 @@ class CommentList extends Component {
   }
 
   render() {
-    console.log("WE ARE IN COMMENT LIST")
     return (
       <div className="comments-list">
         <h3>Comments:</h3>

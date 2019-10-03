@@ -6,7 +6,7 @@ function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case ADD_POST:
       let newPost = { ...action.payload };
-      return { ...state, posts: [...state.posts, newPost] };
+      return { ...state, posts: [...state.posts, {...newPost, comments: []}]};
 
     case EDIT_POST:
       let editedPost = { ...action.payload };
@@ -37,9 +37,9 @@ function rootReducer(state = INITIAL_STATE, action) {
       };
 
     case DELETE_COMMENT:
-      let { postIdentification, commentToDelete } = action.payload
+      let { postIdentification, commentId} = action.payload
       let postIdx = state.posts.findIndex(post => post.id === postIdentification);
-      let commentIdx = state.posts[postIdx].comments.findIndex(comment => comment === commentToDelete);
+      let commentIdx = state.posts[postIdx].comments.findIndex(comment => comment === commentId);
       let commentsCopy = [...state.posts[postIdx].comments];
       commentsCopy.splice(commentIdx, 1)
       return {

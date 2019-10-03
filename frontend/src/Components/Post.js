@@ -19,8 +19,7 @@ class Post extends Component {
   }
 
   render() {
-    let { post } = this.props;
-    console.log("WE GOT HERE POST.js")
+    const { post } = this.props;
     return (
       <div>
         {post
@@ -30,7 +29,7 @@ class Post extends Component {
             <button onClick={this.handleDelete}>Delete</button>
             <p>{post.description}</p>
             <p>{post.body}</p>
-            <CommentList post={post} deleteComment={this.props.deleteComment} />
+            <CommentList post={post} removeComment={this.props.removeComment} />
             <CommentForm newComment={this.props.newComment} post={post} />
           </div>)
           : "This post does not exist."}
