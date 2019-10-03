@@ -4,7 +4,8 @@ import { addPost, editPost, deletePost, getAllPosts } from "../actions";
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts
+    posts: state.posts,
+    titles: state.titles
   };
 }
 

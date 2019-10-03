@@ -26,12 +26,12 @@ function rootReducer(state = INITIAL_STATE, action) {
       return { ...state, posts: [...copy] };
 
     case ADD_COMMENT:
-      let { postId, comment } = action.payload
+      let postId = action.payload.postId;
       return {
         ...state,
         posts: state.posts.map(post => (
           post.id === postId
-            ? { ...post, comments: [...post.comments, comment] }
+            ? { ...post, comments: [...post.comments, {...action.payload.comment}] }
             : post
         ))
       };
@@ -52,14 +52,14 @@ function rootReducer(state = INITIAL_STATE, action) {
       };
 
     case GET_POSTS:
-      return { ...state, titles: [...state.titles, ...action.payload] };
+      return { ...state, titles: action.payload };
 
     case GET_POST:
       let foundPost = state.posts.find(post => post.id === action.payload.id)
-      if (!foundPost) {
+      if (foundPost === undefined) {
         return {
           ...state,
-          posts: [...state.posts, ...action.payload]
+          posts: [...state.posts, {...action.payload}]
         }
       }
       return state;

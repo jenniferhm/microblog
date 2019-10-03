@@ -10,7 +10,7 @@ class Routes extends Component {
       <Switch>
         <Route exact path="/" render={() => <HomePageListContainer />} />
         <Route exact path="/:id" render={rtProps => <PostContainer {...rtProps} />} />
-        <Route exact path="/:id/edit" render={(rtProps) => <PostForm {...rtProps} post={this.props.post} />} />
+        <Route exact path="/:id/edit" render={(rtProps) => <PostForm {...rtProps} />} />
         <Route exact path="/newpost/new" render={(rtProps) => <PostForm {...rtProps} />} />
         <Redirect to="/" />
       </Switch>

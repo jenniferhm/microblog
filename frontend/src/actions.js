@@ -24,10 +24,10 @@ function remove(id) {
   }
 }
 
-function addComment(commentAndPostId) {
+function addComment(comment, postId) {
   return {
     type: ADD_COMMENT,
-    payload: commentAndPostId
+    payload: {comment, postId}
   }
 }
 
@@ -86,7 +86,7 @@ export function getOnePost(id) {
 export function addPost(post) {
   return async function thunk(dispatch) {
     try {
-      let res = await axios.post(`${BASE_URL}/`, { post });
+      let res = await axios.post(`${BASE_URL}/`, post);
       dispatch(add(res.data));
     }
     catch (error) {
@@ -121,11 +121,11 @@ export function deletePost(id) {
 }
 
 export function newComment(commentData) {
-  let { comment, postId } = commentData
+  let { comment, postId } = commentData;
   return async function thunk(dispatch) {
     try {
-      let post = await axios.post(`${BASE_URL}/posts/${postId}/comments/`, { comment });
-      dispatch(addComment(post.data));
+      let post = await axios.post(`${BASE_URL}/${postId}/comments/`, {text: comment});
+      dispatch(addComment(post.data, postId));
     }
     catch (error) {
       dispatch(handleError(error.response.data))
@@ -137,7 +137,7 @@ export function removeComment(commentData) {
   let { postIdentification, commentId } = commentData
   return async function thunk(dispatch) {
     try {
-      let post = await axios.delete(`${BASE_URL}/posts/${postIdentification}/comments/${commentId}`);
+      let post = await axios.delete(`${BASE_URL}/${postIdentification}/comments/${commentId}`);
       dispatch(deleteComment(post.data));
     }
     catch (error) {

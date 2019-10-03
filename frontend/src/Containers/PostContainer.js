@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import Post from "../Components/Post";
-import { removeComment, newComment, editPost, deletePost } from "../actions";
+import { removeComment, newComment, editPost, deletePost, getOnePost } from "../actions";
 
 function mapStateToProps(state, ownProps) {
   let post = state.posts.find(p => (
-    p.id === ownProps.match.params.id
+    p.id === +ownProps.match.params.id
   ));
   return {
     post
@@ -13,7 +13,7 @@ function mapStateToProps(state, ownProps) {
 
 const connectedComponent = connect(
   mapStateToProps,
-  { removeComment, newComment, editPost, deletePost }
+  { removeComment, newComment, editPost, deletePost, getOnePost }
 );
 
 export default connectedComponent(Post);

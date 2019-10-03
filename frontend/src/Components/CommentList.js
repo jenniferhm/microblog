@@ -11,13 +11,14 @@ class CommentList extends Component {
   }
 
   render() {
+    console.log("WE ARE IN COMMENT LIST")
     return (
       <div className="comments-list">
         <h3>Comments:</h3>
         <ul>
           {this.props.post.comments
             ? (this.props.post.comments.map(comment =>
-              <li key={comment}>{comment}
+              <li key={comment.id}>{comment.text}
                 <button onClick={() => this.handleDelete(comment.id)}>X</button>
               </li>))
             : ""}
