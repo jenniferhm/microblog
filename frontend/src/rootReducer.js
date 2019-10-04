@@ -1,4 +1,4 @@
-import { ADD_POST, EDIT_POST, REMOVE_POST, ADD_COMMENT, DELETE_COMMENT, GET_POST, GET_POSTS } from "./actionTypes";
+import { ADD_POST, EDIT_POST, REMOVE_POST, ADD_COMMENT, DELETE_COMMENT, GET_POST, GET_POSTS, VOTE } from "./actionTypes";
 
 const INITIAL_STATE = { posts: [], titles: [] };
 
@@ -6,7 +6,7 @@ function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case ADD_POST:
       let newPost = { ...action.payload };
-      return { ...state, posts: [...state.posts, {...newPost, comments: []}]};
+      return { ...state, posts: [...state.posts, { ...newPost, comments: [] }] };
 
     case EDIT_POST:
       let editedPost = { ...action.payload };
@@ -31,13 +31,13 @@ function rootReducer(state = INITIAL_STATE, action) {
         ...state,
         posts: state.posts.map(post => (
           post.id === postId
-            ? { ...post, comments: [...post.comments, {...action.payload.comment}] }
+            ? { ...post, comments: [...post.comments, { ...action.payload.comment }] }
             : post
         ))
       };
 
     case DELETE_COMMENT:
-      let { postIdentification, commentId} = action.payload
+      let { postIdentification, commentId } = action.payload
       let postIdx = state.posts.findIndex(post => post.id === postIdentification);
       let commentIdx = state.posts[postIdx].comments.findIndex(comment => comment === commentId);
       let commentsCopy = [...state.posts[postIdx].comments];
@@ -59,10 +59,21 @@ function rootReducer(state = INITIAL_STATE, action) {
       if (foundPost === undefined) {
         return {
           ...state,
-          posts: [...state.posts, {...action.payload}]
+          posts: [...state.posts, { ...action.payload }]
         }
       }
       return state;
+
+    case VOTE:
+      const { votes, pstId } = { ...action.payload };
+      return {
+        ...state,
+        posts: state.posts.map(post => (
+          post.id === +pstId
+            ? { ...post, votes }
+            : post
+        ))
+      };
 
     default:
       return state;

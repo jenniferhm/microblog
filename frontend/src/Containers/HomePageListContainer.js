@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import HomePageList from "../Components/HomePageList";
-import { addPost, editPost, deletePost, getAllPosts } from "../actions";
+import { addPost, editPost, deletePost, getAllPosts, vote } from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -11,7 +11,7 @@ function mapStateToProps(state) {
 
 const connectedComponent = connect(
   mapStateToProps,
-  { addPost, editPost, deletePost, getAllPosts }
+  { addPost, editPost, deletePost, getAllPosts, vote }
 );
 
 export default connectedComponent(HomePageList);

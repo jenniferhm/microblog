@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Post from "../Components/Post";
-import { removeComment, newComment, editPost, deletePost, getOnePost } from "../actions";
+import { removeComment, newComment, editPost, deletePost, getOnePost, vote } from "../actions";
 
 function mapStateToProps(state, ownProps) {
   let post = state.posts.find(p => (
@@ -13,7 +13,7 @@ function mapStateToProps(state, ownProps) {
 
 const connectedComponent = connect(
   mapStateToProps,
-  { removeComment, newComment, editPost, deletePost, getOnePost }
+  { removeComment, newComment, editPost, deletePost, getOnePost, vote }
 );
 
 export default connectedComponent(Post);

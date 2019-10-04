@@ -1,4 +1,4 @@
-import { ADD_POST, EDIT_POST, REMOVE_POST, ADD_COMMENT, DELETE_COMMENT, GET_POST, GET_POSTS } from "./actionTypes";
+import { ADD_POST, EDIT_POST, REMOVE_POST, ADD_COMMENT, DELETE_COMMENT, GET_POST, GET_POSTS, VOTE } from "./actionTypes";
 import axios from 'axios'
 
 const BASE_URL = 'http://localhost:5000/api/posts'
@@ -49,6 +49,13 @@ function getPost(post) {
   return { 
     type: GET_POST, 
     payload: post 
+  }
+}
+
+function castVote(voteData) {
+  return { 
+    type: VOTE, 
+    payload: voteData 
   }
 }
 
@@ -140,6 +147,19 @@ export function removeComment(commentData) {
     try {
       await axios.delete(`${BASE_URL}/${postIdentification}/comments/${commentId}`);
       dispatch(deleteComment(commentData));
+    }
+    catch (error) {
+      dispatch(handleError(error.response.data))
+    }
+  }
+}
+
+export function vote(voteData) {
+  const { id, direction } = voteData
+  return async function thunk(dispatch) {
+    try {
+      let res = await axios.post(`${BASE_URL}/${id}/vote/${direction}`);
+      dispatch(castVote({...res.data, pstId: id}));
     }
     catch (error) {
       dispatch(handleError(error.response.data))

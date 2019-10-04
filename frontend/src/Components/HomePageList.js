@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import TitleDescription from "./TitleDescription";
-import { Link } from "react-router-dom";
 
 class HomePageList extends PureComponent {
   componentDidMount() {
@@ -12,13 +11,19 @@ class HomePageList extends PureComponent {
   }
 
   render() {
+    let titleCards = this.props.titles;
+
+    titleCards.sort(function(a,b) {
+      return b.votes - a.votes;
+    });
+
     return (
       <div>
         <h1>HomePageList</h1>
-        {this.props.titles
+        {titleCards
           ?
-          this.props.titles.map(title => (
-            <Link to={`/${title.id}`} key={title.id}><TitleDescription title={title} /></Link>
+          titleCards.map(title => (
+            <TitleDescription key={title.id} vote={this.props.vote} title={title} />
           ))
           : ""}
       </div>
