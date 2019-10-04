@@ -36,7 +36,7 @@ class Post extends Component {
             <Link className="other-button" to={`/${post.id}/edit`}><button className="other-button">Edit</button></Link>
             <button className="other-button" onClick={this.handleDelete}>Delete</button>
             </div><br></br>
-            <p>{post.votes} votes.
+            <p>Score: {post.votes}
              <span>
                 <button className="iconButton" onClick={() => this.handleVote("up")}><i className="fas fa-thumbs-up"></i></button>
                 <button className="iconButton" onClick={() => this.handleVote("down")}><i className="fas fa-thumbs-down"></i></button>

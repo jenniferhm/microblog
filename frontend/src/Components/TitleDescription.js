@@ -20,7 +20,7 @@ class TitleDescription extends Component {
           <h3 className="card-title">{title.title}</h3>
           <p className="card-text">{title.description}</p>
         </Link>
-        <p className="card-body">{title.votes} votes.
+        <p className="card-body">Score: {title.votes}
           <span>
             <button className="iconButton" onClick={() => this.handleVote("up")}><i className="fas fa-thumbs-up"></i></button>
             <button className="iconButton" onClick={() => this.handleVote("down")}><i className="fas fa-thumbs-down"></i></button>

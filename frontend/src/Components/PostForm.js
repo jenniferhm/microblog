@@ -45,15 +45,15 @@ class PostForm extends Component {
         <form className="new-post-form" onSubmit={this.handleSubmit}>
           <div className="form-group" >
             <label htmlFor="title">Title: </label>
-            <input className="form-control-sm" type="text" id="title" name="title" onChange={this.handleChange} value={this.state.title} />
+            <input className="form-control-sm" type="text" id="title" name="title" onChange={this.handleChange} value={this.state.title} required />
           </div>
           <div className="form-group" >
             <label htmlFor="description">Description: </label>
-            <input className="form-control-sm" type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} />
+            <input className="form-control-sm" type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} required/>
           </div>
           <div className="form-group" >
             <label htmlFor="body">Body: </label>
-            <textarea className="form-control-sm two" type="text" id="body" name="body" onChange={this.handleChange} value={this.state.body} />
+            <textarea className="form-control-sm two" type="text" id="body" name="body" onChange={this.handleChange} value={this.state.body} required/>
           </div>
           <div className="form-group" >
             <button className="other-button">Save</button>
