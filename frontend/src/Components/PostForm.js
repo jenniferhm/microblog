@@ -41,17 +41,25 @@ class PostForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="home">
         <form className="new-post-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Title: </label>
-          <input type="text" id="title" name="title" onChange={this.handleChange} value={this.state.title} />
-          <label htmlFor="description">Description: </label>
-          <input type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} />
-          <label htmlFor="body">Body: </label>
-          <textarea type="text" id="body" name="body" onChange={this.handleChange} value={this.state.body} />
-          <button>Save</button>
+          <div className="form-group" >
+            <label htmlFor="title">Title: </label>
+            <input className="form-control-sm" type="text" id="title" name="title" onChange={this.handleChange} value={this.state.title} />
+          </div>
+          <div className="form-group" >
+            <label htmlFor="description">Description: </label>
+            <input className="form-control-sm" type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} />
+          </div>
+          <div className="form-group" >
+            <label htmlFor="body">Body: </label>
+            <textarea className="form-control-sm two" type="text" id="body" name="body" onChange={this.handleChange} value={this.state.body} />
+          </div>
+          <div className="form-group" >
+            <button className="other-button">Save</button>
+            </div>
         </form>
-        <button onClick={() => this.props.history.push("/")}>Cancel</button>
+          <button className="other-button" onClick={() => this.props.history.push("/")}>Cancel</button>
       </div>
     );
   }

@@ -26,22 +26,26 @@ class Post extends Component {
   render() {
     const { post } = this.props;
     return (
-      <div>
+      <div className="home">
         {post
-          ? (<div>
-            <h4>{post.title}</h4>
-            <Link to={`/${post.id}/edit`}><button>Edit</button></Link>
-            <button onClick={this.handleDelete}>Delete</button>
+          ? (<div className="post">
+            <h3>{post.title}</h3>
+            <h5>{post.description}</h5>
+            <p>{post.body}</p>
+            <div>
+            <Link className="other-button" to={`/${post.id}/edit`}><button className="other-button">Edit</button></Link>
+            <button className="other-button" onClick={this.handleDelete}>Delete</button>
+            </div><br></br>
             <p>{post.votes} votes.
              <span>
-                <button onClick={() => this.handleVote("up")}><i className="fas fa-thumbs-up"></i></button>
-                <button onClick={() => this.handleVote("down")}><i className="fas fa-thumbs-down"></i></button>
+                <button className="iconButton" onClick={() => this.handleVote("up")}><i className="fas fa-thumbs-up"></i></button>
+                <button className="iconButton" onClick={() => this.handleVote("down")}><i className="fas fa-thumbs-down"></i></button>
               </span>
             </p>
-            <p>{post.description}</p>
-            <p>{post.body}</p>
+            <div className="card">
             <CommentList post={post} removeComment={this.props.removeComment} />
             <CommentForm newComment={this.props.newComment} post={post} />
+            </div>
           </div>)
           : "This post does not exist."}
       </div>

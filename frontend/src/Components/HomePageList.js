@@ -13,13 +13,15 @@ class HomePageList extends PureComponent {
   render() {
     let titleCards = this.props.titles;
 
-    titleCards.sort(function(a,b) {
+    titleCards.sort(function (a, b) {
       return b.votes - a.votes;
     });
 
     return (
-      <div>
-        <h1>HomePageList</h1>
+      <div className="home">
+      <p className="homepage-title">Small Blog, Big Ideas</p>
+      <div className="home-page-list">
+
         {titleCards
           ?
           titleCards.map(title => (
@@ -27,6 +29,7 @@ class HomePageList extends PureComponent {
           ))
           : ""}
       </div>
+      </div >
     );
   }
 }

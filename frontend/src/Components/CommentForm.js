@@ -32,7 +32,7 @@ class CommentForm extends Component {
             value={this.state.comment}
             onChange={this.handleChange}
             type="text" />
-          <button>Submit</button>
+          <button className="other-button">Submit</button>
         </form>
       </div>
     );

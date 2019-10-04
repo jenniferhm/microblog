@@ -5,15 +5,16 @@ import { Navbar, Nav, NavItem } from "reactstrap";
 class NavBox extends Component {
   render() {
     return (
-      <div className="navBar">
-      <Navbar bg="light" expand="lg">
-        <NavLink to="/"><h2>Microblog</h2></NavLink>
+      <div className="nav-bar container">
+        <Navbar bg="light" expand="lg">
+          <p>The</p>
+          <h2>Macroblog</h2>
 
-        <Nav className="mr-auto" navbar>
-          <NavItem><NavLink to="/">Blog</NavLink></NavItem>
-          <NavItem><NavLink to="/newpost/new">Add a new post</NavLink></NavItem>
-        </Nav>
-      </Navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem><NavLink className="card-link" to="/">Blog</NavLink></NavItem>
+            <NavItem><NavLink className="card-link" to="/newpost/new">Add a new post</NavLink></NavItem>
+          </Nav>
+        </Navbar>
       </div>
     );
   }

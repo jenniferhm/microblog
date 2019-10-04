@@ -13,12 +13,12 @@ class CommentList extends Component {
   render() {
     return (
       <div className="comments-list">
-        <h3>Comments:</h3>
+        <h5>Comments:</h5>
         <ul>
           {this.props.post.comments
             ? (this.props.post.comments.map(comment =>
-              <li key={comment.id}>{comment.text}
-                <button onClick={() => this.handleDelete(comment.id)}>X</button>
+              <li className="list-group-item" key={comment.id}>{comment.text}
+                <button className="x-button" onClick={() => this.handleDelete(comment.id)}>X</button>
               </li>))
             : ""}
         </ul>

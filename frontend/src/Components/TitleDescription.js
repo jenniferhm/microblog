@@ -15,15 +15,15 @@ class TitleDescription extends Component {
   render() {
     const { title } = this.props;
     return (
-      <div>
-        <Link to={`/${title.id}`} key={title.id}>
-          <h3>{title.title}</h3>
-          <p>{title.description}</p>
+      <div className="card">
+        <Link className="card-link" to={`/${title.id}`} key={title.id}>
+          <h3 className="card-title">{title.title}</h3>
+          <p className="card-text">{title.description}</p>
         </Link>
-        <p>{title.votes} votes.
+        <p className="card-body">{title.votes} votes.
           <span>
-            <button onClick={() => this.handleVote("up")}><i className="fas fa-thumbs-up"></i></button>
-            <button onClick={() => this.handleVote("down")}><i className="fas fa-thumbs-down"></i></button>
+            <button className="iconButton" onClick={() => this.handleVote("up")}><i className="fas fa-thumbs-up"></i></button>
+            <button className="iconButton" onClick={() => this.handleVote("down")}><i className="fas fa-thumbs-down"></i></button>
           </span>
         </p>
       </div>
