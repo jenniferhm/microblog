@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import TitleDescription from "./TitleDescription";
 import { Link } from "react-router-dom";
 
-class HomePageList extends Component {
+class HomePageList extends PureComponent {
   componentDidMount() {
     this.props.getAllPosts();
   }

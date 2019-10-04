@@ -7,8 +7,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBox />
-        <Routes />
+        <NavBox className="navBox"/>
+        <Routes className="routes"/>
       </div>
     );
   }
