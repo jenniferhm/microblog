@@ -1,14 +1,8 @@
 # Microblog (a.k.a. Macroblog)
+A blog site that allows users to like, comment, and up vote posts. The frontend is built with React and Redux, with a backend built with Express and PostgreSQL.
 
-## Frontend
-
-
-
-## Backend
-
-1.  Clone this repository and `cd` into it
-2.  `psql < schema.sql`
-3.  `npm install`
-4.  `nodemon`
-
-All routes are prefixed with `/api` so to fetch posts the route is `GET /api/posts`
+## Core Technologies
+- React
+- React Router
+- React Redux
+- Redux Thunk

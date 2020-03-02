@@ -71,6 +71,7 @@
 
 .card-link {
   color: black;
+  padding: 10px;
 }
 
 .card-link:hover {
